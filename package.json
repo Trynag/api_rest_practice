@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Trynag/api_rest_practice/issues"
   },
-  "homepage": "https://github.com/Trynag/api_rest_practice#readme"
+  "homepage": "https://github.com/Trynag/api_rest_practice#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }
