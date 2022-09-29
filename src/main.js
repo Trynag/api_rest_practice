@@ -7,10 +7,10 @@ const axios_api = axios.create({
 })
 
 async function getTrendingPreview() {
-    const { data } = await axios_api('trending/movie/day')
-
+    const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`)
     const trendingPreviewsMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList');
-    
+    const data = await response.json();    
+
     data.results.forEach( movie => {
         const movieContainer = document.createElement('div')
         movieContainer.classList.add('movie-container')
@@ -26,11 +26,11 @@ async function getTrendingPreview() {
 }
 
 async  function getCategoriesPreview() {
-    const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
+    // const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
+    const { data } = await axios_api.get('genre/movie/list')
 
     const previewCategoryContainer = document.querySelector('#categoriesPreview .categoriesPreview-list');
     
-    const data = await response.json()
     data.genres.forEach( category => {
         const categoryContainer = document.createElement('div')
         categoryContainer.classList.add('category-container')
